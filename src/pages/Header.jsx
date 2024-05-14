@@ -33,7 +33,6 @@ export default function Header() {
           </div>
         </Container>
       </div>
-      <Hero />
     </div>
   );
 }
