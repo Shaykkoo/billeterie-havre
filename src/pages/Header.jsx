@@ -5,6 +5,7 @@ import Hero from "../components/Hero";
 import Button from "../components/Button";
 import Background from "../assets/images/panorama_lehavre.jpg";
 import Typography from "../components/Typography";
+
 export default function Header() {
   return (
     <div>
@@ -27,13 +28,12 @@ export default function Header() {
               </Typography>
             </div>
             <div className="flex flex-row gap-5 z-20">
-              <Button color="primary">Se Connecter</Button>
-              <Button color="secondary">S'inscrire</Button>
+              <Button link="/login" label="Se connecter" color="primary" />
+              <Button link="/signin" label="S'inscrire" color="secondary" />
             </div>
           </div>
         </Container>
       </div>
-      <Hero />
     </div>
   );
 }
