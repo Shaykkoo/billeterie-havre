@@ -6,11 +6,7 @@ export default function Typography({ children, className, variant, display }) {
     case "white":
       color = "text-white";
       break;
-
-    case "gray":
-      color = "text-stone-500";
-      break;
-    case "secondary":
+    case "primary":
       color = "text-sky-900";
       break;
 
@@ -44,12 +40,6 @@ export default function Typography({ children, className, variant, display }) {
       return (
         <div>
           <h1 className={`${className} ${color} text-xl `}>{children}</h1>
-        </div>
-      );
-    case "sm":
-      return (
-        <div>
-          <h1 className={`${className} ${color} text-sm `}>{children}</h1>
         </div>
       );
 
