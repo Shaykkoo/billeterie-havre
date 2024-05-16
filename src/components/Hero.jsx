@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Container from "../components/Container";
 import Typography from "./Typography";
-import Logo from "../assets/logos/Logo.png";
+import Button from "./Button";
+import Carousel from "./Carousel";
 
 const MyComponent = () => {
   const getMonthName = (date) => {
