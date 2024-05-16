@@ -1,7 +1,6 @@
 import React from "react";
 import Container from "./Container";
 import Logo from "../assets/logos/Logo.png";
-import Hero from "./Hero";
 import Button from "./Button";
 import Background from "../assets/images/panorama_lehavre.jpg";
 import Typography from "./Typography";
@@ -13,7 +12,7 @@ export default function Header() {
         <img
           className="absolute w-full h-full opacity-80 object-cover z-0 top-0 left-0"
           src={Background}
-          alt=""
+          alt="Logo"
         />
         <Container>
           <div className="flex flex-row justify-between ">

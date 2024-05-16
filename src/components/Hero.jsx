@@ -3,6 +3,7 @@ import axios from "axios";
 import Container from "../components/Container";
 import Typography from "./Typography";
 import Button from "./Button";
+import Logo from "../assets/logos/Logo.png";
 import Carousel from "./Carousel";
 
 const MyComponent = () => {
@@ -43,7 +44,12 @@ const MyComponent = () => {
   }, []);
 
   if (error) {
-    return <div>Une erreur s'est produite : {error.message}</div>;
+    return (
+      <div>
+        <img src={Logo} className=" animate-spin" /> Une erreur s'est produite :{" "}
+        {error.message}
+      </div>
+    );
   }
 
   return (
