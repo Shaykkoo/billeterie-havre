@@ -43,12 +43,7 @@ const MyComponent = () => {
   }, []);
 
   if (error) {
-    return (
-      <div>
-        <img src={Logo} className=" animate-spin" /> Une erreur s'est produite :{" "}
-        {error.message}
-      </div>
-    );
+    return <div>Une erreur s'est produite : {error.message}</div>;
   }
 
   return (
