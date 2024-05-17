@@ -27,7 +27,7 @@ function Login() {
     setError(null);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/login", {
+      const response = await fetch("http://127.0.0.1:8000/connexion", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,7 +46,7 @@ function Login() {
       localStorage.setItem("token", result.token);
 
       // Rediriger l'utilisateur après une connexion réussie
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       setError(error.message);
     } finally {
