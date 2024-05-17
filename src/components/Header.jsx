@@ -9,7 +9,7 @@ import Typography from "./Typography";
 export default function Header() {
   return (
     <div>
-      <div className="relative py-28 bg-blue-100">
+      <div className="relative py-28 shadow-2xl mb-20 bg-blue-100">
         <img
           className="absolute w-full h-full opacity-80 object-cover z-0 top-0 left-0"
           src={Background}
