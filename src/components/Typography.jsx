@@ -6,6 +6,9 @@ export default function Typography({ children, className, variant, display }) {
     case "white":
       color = "text-white";
       break;
+    case "primary":
+      color = "text-sky-900";
+      break;
 
     default:
       color = "text-black";

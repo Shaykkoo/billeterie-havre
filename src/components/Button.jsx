@@ -8,7 +8,7 @@ const Button = ({ children, className, color, theme, link, label }) => {
       background = "bg-sky-600 hover:bg-sky-800";
       break;
     case "secondary":
-      background = "text-slate-700 hover:text-white bg-white hover:bg-sky-950";
+      background = "text-slate-900 hover:text-white bg-white hover:bg-sky-950";
       break;
     default:
       background = "none";

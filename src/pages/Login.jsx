@@ -1,8 +1,9 @@
-import React, { useState, Fragment } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import Header from "./Header";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Fragment } from "react";
+import Header from "../components/Header";
 import Button from "../components/Button";
-import "../assets/styles/Pages.css";
+import "./Pages.css";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -58,49 +59,23 @@ function Login() {
     <Fragment>
       <Header />
       <div className="loginContainer">
-        <form onSubmit={handleSubmit} className="formLogin">
+        <form action="" className="formLogin">
           <h1 className="titleLogin">Se Connecter</h1>
           <div className="divLogin">
             <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="exemple@gmail.com"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
+            <input type="email" id="email" placeholder="exemple@gmail.com" />
             <label htmlFor="password">Mot de passe</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="********"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
+            <input type="password" id="password" placeholder="********" />
           </div>
-          <Button
-            type="submit"
-            label={"Se connecter"}
-            color="primary"
-            className="btnLogin"
-            disabled={loading}
-          />
-          {loading && (
-            <p className="mt-2 text-sm text-gray-600">Envoi des données...</p>
-          )}
-          {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+          <Button label={"Se connecter"} color="primary" className="btnLogin" />
         </form>
 
         <div className="divRegister">
           <p>
             Pas encore de compte?{" "}
-            <span className="loginLinkRegister">
+            <text className="loginLinkRegister">
               <Link to="/signin">Inscrivez-vous !</Link>
-            </span>
+            </text>
           </p>
         </div>
       </div>
