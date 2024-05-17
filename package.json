@@ -17,6 +17,7 @@
     "@fullcalendar/list": "^6.1.11",
     "@fullcalendar/react": "^6.1.11",
     "@fullcalendar/timegrid": "^6.1.11",
+    "@testing-library/user-event": "^14.5.2",
     "axios": "^1.6.8",
     "react": "^18.2.0",
     "react-alice-carousel": "^2.9.1",
@@ -24,7 +25,13 @@
     "react-router-dom": "^6.23.1",
     "vite-plugin-pages": "^0.32.1"
   },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
   "devDependencies": {
+    "@babel/preset-env": "^7.24.5",
     "@babel/preset-react": "^7.24.1",
     "@testing-library/dom": "^10.1.0",
     "@testing-library/jest-dom": "^6.4.5",
@@ -33,6 +40,7 @@
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
+    "babel-jest": "^29.7.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",

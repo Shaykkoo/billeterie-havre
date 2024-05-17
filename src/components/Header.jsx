@@ -1,7 +1,6 @@
 import React from "react";
 import Container from "./Container";
 import Logo from "../assets/logos/Logo.png";
-import Hero from "./Hero";
 import Button from "./Button";
 import Background from "../assets/images/panorama_lehavre.jpg";
 import Typography from "./Typography";
@@ -17,9 +16,9 @@ export default function Header() {
         />
         <Container>
           <div className="flex flex-row justify-between ">
-            <div className=" flex flex-row z-20">
+            <div className=" flex -mt-10 flex-row z-20">
               <Button link="/" color="white">
-                <img className="absolute mt-7" src={Logo} alt="" />
+                <img className="absolute mt-7" src={Logo} alt="Logo" />
                 <Typography
                   variant="title"
                   display="white"

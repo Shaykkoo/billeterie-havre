@@ -54,6 +54,7 @@ export default function PopUpEvent({ event, onClose }) {
               <div className="h-72 ml-[24%] mb-20 w-96 relative">
                 <img
                   src={event.image}
+                  alt={event.name}
                   className="absolute h-full left-[50%] mt-10 object-cover rounded-sm"
                 />
               </div>
