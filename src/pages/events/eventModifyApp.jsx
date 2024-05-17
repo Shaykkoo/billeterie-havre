@@ -7,13 +7,16 @@ function EventModifyApp() {
   const navigate = useNavigate();
   const [event, setEvent] = useState({
     name: "",
-    typeId: "",
-    startDate: "",
-    endDate: "",
+    type: "",
+    start_date: "",
+    end_date: "",
+    image: "",
+    places_total: 0,
+    places_reserved: 0,
+    adultOnly: true,
+    canceled: false,
+    canceled_message: null,
     description: "",
-    placesTotal: "",
-    placesReserved: "",
-    adultOnly: false,
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -34,9 +37,18 @@ function EventModifyApp() {
       }
       const eventData = await response.json();
       setEvent({
-        ...eventData.event,
+        name: eventData.events.name,
+        type: eventData.events.typeId.toString(),
+        start_date: eventData.events.startDate,
+        end_date: eventData.events.endDate,
+        image: eventData.events.image,
+        places_total: eventData.events.placesTotal,
+        places_reserved: eventData.events.placesReserved,
+        adult_only: eventData.events.adultOnly,
+        canceled: eventData.events.canceled,
+        canceled_message: eventData.events.canceledMessage,
+        description: eventData.events.description,
       });
-      console.log(eventData);
       setLoading(false);
     } catch (error) {
       setError(error.message);
@@ -57,17 +69,6 @@ function EventModifyApp() {
     }
   };
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-    const seconds = String(date.getSeconds()).padStart(2, "0");
-    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEvent({ ...event, [name]: value });
@@ -75,7 +76,20 @@ function EventModifyApp() {
 
   const handleModify = async () => {
     try {
-      console.log("Sending event data:", event); // Log event data being sent
+      /*       const sendData = {
+        name: event.name,
+        type: event.typeId.toString(),
+        start_date: event.startDate,
+        end_date: event.endDate,
+        image: event.image,
+        places_total: event.placesTotal,
+        places_reserved: event.placesReserved,
+        adult_only: event.adultOnly,
+        canceled: event.canceled,
+        canceled_message: event.canceledMessage,
+        description: event.description,
+      }; */
+      console.log("Sending event data:", event);
       const response = await fetch(`http://127.0.0.1:8000/api/events/${id}`, {
         method: "PUT",
         body: JSON.stringify(event),
@@ -83,6 +97,7 @@ function EventModifyApp() {
           "Content-Type": "application/json",
         },
       });
+      console.log(event);
       if (!response.ok) {
         throw new Error("Erreur lors de la modification de l'événement");
       }
@@ -120,7 +135,7 @@ function EventModifyApp() {
         throw new Error("Erreur lors de l'annulation de l'événement");
       }
       alert("Événement annulé avec succès !");
-      navigate("/"); // Redirect to a different page, e.g., home page
+      navigate("/admin"); // Redirect to a different page, e.g., home page
     } catch (error) {
       alert("Erreur : " + error.message);
     }
@@ -153,8 +168,8 @@ function EventModifyApp() {
           <div className="mb-4">
             <label className="block text-gray-700">Type :</label>
             <select
-              name="type_id"
-              value={event.typeId}
+              name="type"
+              value={event.type}
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
             >
@@ -170,7 +185,7 @@ function EventModifyApp() {
             <input
               type="datetime-local"
               name="start_date"
-              value={event.startDate}
+              value={event.start_date}
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
             />
@@ -180,7 +195,7 @@ function EventModifyApp() {
             <input
               type="datetime-local"
               name="end_date"
-              value={event.endDate}
+              value={event.end_date}
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
             />
@@ -202,7 +217,7 @@ function EventModifyApp() {
             <input
               type="number"
               name="places_total"
-              value={event.placesTotal}
+              value={event.places_total}
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
             />
@@ -212,7 +227,7 @@ function EventModifyApp() {
             <input
               type="number"
               name="places_reserved"
-              value={event.placesReserved}
+              value={event.places_reserved}
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
             />
@@ -222,7 +237,7 @@ function EventModifyApp() {
             <input
               type="checkbox"
               name="adult_only"
-              checked={event.adultOnly}
+              checked={event.adult_only}
               onChange={(e) =>
                 handleChange({
                   target: { name: "adult_only", value: e.target.checked },
@@ -237,7 +252,7 @@ function EventModifyApp() {
                 Raison de l'annulation :
               </label>
               <textarea
-                value={canceledReason}
+                value={event.canceled_reason}
                 onChange={(e) => setCanceledReason(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md"
               />
